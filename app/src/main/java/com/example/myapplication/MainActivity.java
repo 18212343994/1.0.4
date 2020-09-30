@@ -15,7 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-//1.0.0
+//1.0.2
 public class MainActivity extends AppCompatActivity {
     Button btn1,btn2;
     EditText editName,editPSW;
