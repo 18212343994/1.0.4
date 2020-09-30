@@ -16,7 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 //1.0.2
-public class MainActivity extends AppCompatActivity {
+public class add extends AppCompatActivity {
     Button btn1,btn2;
     EditText editName,editPSW;
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.add);
 
         btn1=findViewById(R.id.btn1);
         btn2=findViewById(R.id.btn2);
@@ -40,24 +40,18 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.txt);
 
 
-        final Button fanyi=(Button)findViewById(R.id.fanyi);
-        final Button add=(Button)findViewById(R.id.add);
 
-        add.setOnClickListener(new View.OnClickListener() {
+
+        Button button=(Button)findViewById(R.id.close);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,add.class);
-                startActivity(intent);
+                finish();
             }
         });
 
-        fanyi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,fanyi.class);
-                startActivity(intent);
-            }
-        });
+
+
 
     }
 
