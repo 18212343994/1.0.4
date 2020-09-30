@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +38,17 @@ public class MainActivity extends AppCompatActivity {
         editPSW=findViewById(R.id.editName);
 
         textView = findViewById(R.id.txt);
+
+
+        final Button fanyi=(Button)findViewById(R.id.fanyi);
+        fanyi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,fanyi.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void btn1Click(View view) throws IOException {
@@ -59,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         while(fileInputStream.read(input) != -1){
             String str = new String(input);
             String [] s = str.split("##");
-            textView.setText("用户名："+s[0]+"   密码："+s[1]);
+            textView.setText("英文："+s[0]+"   中文："+s[1]);
         }
         if(fileInputStream !=null){
             fileInputStream.close();
