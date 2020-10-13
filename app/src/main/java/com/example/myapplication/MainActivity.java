@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn1=findViewById(R.id.btn1);
+        //btn1=findViewById(R.id.btn1);
         btn2=findViewById(R.id.btn2);
 
         editName=findViewById(R.id.editName);
@@ -43,10 +43,20 @@ public class MainActivity extends AppCompatActivity {
         final Button fanyi=(Button)findViewById(R.id.fanyi);
         final Button add=(Button)findViewById(R.id.add);
 
+        final Button btn1=(Button)findViewById(R.id.btn1);
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,add.class);
+                startActivity(intent);
+            }
+        });
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,cet4.class);
                 startActivity(intent);
             }
         });

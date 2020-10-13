@@ -16,31 +16,17 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 //1.0.2
-public class add extends AppCompatActivity {
-    Button btn1,btn2;
-    EditText editName,editPSW;
-
+public class cet4 extends AppCompatActivity {
+    Button cet4;
     TextView textView;
-
-
-
     String fileName="cet4";
+    private int count=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add);
-
-        btn1=findViewById(R.id.btn1);
-        btn2=findViewById(R.id.btn2);
-
-        editName=findViewById(R.id.editName);
-        editPSW=findViewById(R.id.editName);
-
+        setContentView(R.layout.cet4);
         textView = findViewById(R.id.txt);
-
-
-
 
         Button button=(Button)findViewById(R.id.close);
         button.setOnClickListener(new View.OnClickListener() {
@@ -49,41 +35,21 @@ public class add extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
-
     }
 
-    public void btn1Click(View view) throws IOException {
-        String name=editName.getText().toString();
-        String pwd=editPSW.getText().toString();
-
-        FileOutputStream fileOutputStream = openFileOutput(fileName, Context.MODE_APPEND);
-        fileOutputStream.write((name+"##"+pwd).getBytes());
-
-        if(fileOutputStream !=null){
-            fileOutputStream.close();
-        }
-
-        Toast.makeText(this,"ok",Toast.LENGTH_LONG).show();
-    }
 
     public void btn2Click(View view) throws IOException {
+
+        count++;
+
         FileInputStream fileInputStream = openFileInput(fileName);
         byte[] input = new byte[fileInputStream.available()];
         while(fileInputStream.read(input) != -1){
             String str = new String(input);
             String [] s = str.split("##");
-
-
-
-                textView.setText("英文：" + s[1] + "   中文：" + s[2]);
-
-
+            textView.setText("英文：" + s[count] + "   中文：" + s[count+1]);
+                //textView.setText("英文：" + s[0] + "   中文：" + s[1]);
         }
-
-
 
 
         if(fileInputStream !=null){
