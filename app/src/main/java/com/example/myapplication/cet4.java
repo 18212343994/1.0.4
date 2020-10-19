@@ -47,8 +47,15 @@ public class cet4 extends AppCompatActivity {
         while(fileInputStream.read(input) != -1){
             String str = new String(input);
             String [] s = str.split("##");
-            textView.setText("英文：" + s[count] + "   中文：" + s[count+1]);
+
+            if(count%2==0){
+
+                textView.setText("英文：" + s[count] + "   中文：" + s[count + 1]);
+            }else {
+
+                textView.setText("英文：" + s[count+1]);
                 //textView.setText("英文：" + s[0] + "   中文：" + s[1]);
+            }
         }
 
 

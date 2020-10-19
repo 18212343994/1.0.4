@@ -8,4 +8,23 @@
         android:text="返回"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
+
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="309dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入英文" />
+    <Button
+        android:id="@+id/chaxun"
+        android:onClick="fanyiOnclick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="翻译"/>
+
+    <TextView
+        android:id="@+id/txt"
+        android:text="neir"
+        android:layout_width="match_parent"
+        android:layout_height="142dp"/>
+
 </LinearLayout>

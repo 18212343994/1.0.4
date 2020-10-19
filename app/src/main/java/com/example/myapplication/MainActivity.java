@@ -97,6 +97,12 @@ public class MainActivity extends AppCompatActivity {
             fileInputStream.close();
         }
 
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
     }
 
 
