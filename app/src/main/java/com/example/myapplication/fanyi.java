@@ -31,6 +31,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class fanyi extends Activity {
+    String re="翻译结果：";
+
     Button fanyi;
     EditText input;
     TextView textView;
@@ -60,7 +62,15 @@ public class fanyi extends Activity {
 
     }
     public void fanyiOnclick(View view) throws IOException {
-        requestDate();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                requestDate();
+            }
+        }).start();
+//        requestDate();
+
         // Retrofit + Rxjava
 
         //String pwd=input.getText().toString();
@@ -97,7 +107,7 @@ public class fanyi extends Activity {
 
         //textView.setText(pwd);
 
-        Toast.makeText(this,"ok",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"翻译成功",Toast.LENGTH_LONG).show();
 
 
     }
@@ -107,14 +117,17 @@ public class fanyi extends Activity {
 
 
 
-
-
-
-
-
     //使用okhttp框架
-    private void requestDate(){
-        String url="http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh&q=test";
+        private void requestDate() {
+
+        String pwd=input.getText().toString();
+        URL url = null;
+        try {
+            url = new URL("http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh&q="+pwd);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        //String url = "http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh&q=test";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(url)//访问连接
@@ -124,21 +137,43 @@ public class fanyi extends Activity {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                textView.setText(e.getMessage().toString());
-
+                //textView.setText("sb");
             }
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                String re = response.body().string();
-                textView.setText(re);
-                //textView.setText("yes");
+               re = response.body().string();
+
+
+                String chinese = "trans\":(.+?),";
+                Matcher ch = Pattern.compile(chinese).matcher(re);
+
+                while (ch.find()){
+
+
+
+                    String chi = ch.group(1);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            textView.setText(chi);
+                        }
+                    });
+
+
+
+                }
+                //textView.setText(re);
+//                textView.setText(re);
+
             }
         });
 
 
 
 
+    }}
 
 
 
@@ -152,21 +187,5 @@ public class fanyi extends Activity {
 
 
 
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-    }
 
 

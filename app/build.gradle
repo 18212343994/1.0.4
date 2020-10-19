@@ -5,6 +5,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    configurations {
+        cleanedAnnotations
+        compile.exclude group: 'org.jetbrains' , module:'annotations'
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
     defaultConfig {
@@ -33,7 +37,9 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 
 
+
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
-        // Retrofit库
+    implementation 'org.jetbrains:annotations-java5:15.0'
+    // Retrofit库
 
 }
