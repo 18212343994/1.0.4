@@ -86,7 +86,7 @@ public class cet4 extends AppCompatActivity {
         Random rand = new Random();
 
 
-        int random=rand.nextInt(5);
+        int random=rand.nextInt(4258);
 
 
 
