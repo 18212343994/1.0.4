@@ -38,6 +38,7 @@ public class cet4 extends AppCompatActivity {
     TextView textView;
     String re;
     String fileName="cet4";
+    public String chinese;
     private int count=0;
 
     @Override
@@ -62,16 +63,14 @@ public class cet4 extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
-
                     requestDate();
-
-
             }
         }).start();
     }
 
-
+    public void show(View view){
+        textView.setText(chinese);
+    }
 
 
 
@@ -135,7 +134,22 @@ public class cet4 extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            textView.setText(re);
+                            //textView.setText(re);
+                            String en = "english\":(.+?),";
+                            String zh = "chinese\":(.+?),";
+                            Matcher matcher = Pattern.compile(en).matcher(re);
+                            Matcher matcher1 = Pattern.compile(zh).matcher(re);
+                            while (matcher.find()){
+                                String ret = matcher.group(1);
+                                //String ret1 = matcher1.group(1);
+                                textView.setText(ret);
+                            }
+
+                            while (matcher1.find()){
+                                String ret1 = matcher.group(0);
+                                chinese = ret1;
+                                //textView.setText(ret);
+                            }
 
                         }
                     });
@@ -149,6 +163,7 @@ public class cet4 extends AppCompatActivity {
 
             }
         });
+
 
 
 
