@@ -37,6 +37,7 @@ public class cet4 extends AppCompatActivity {
     Button cet4;
     TextView textView;
     String re;
+    public int ran = 1;
     String fileName="cet4";
     public String chinese;
     private int count=0;
@@ -63,14 +64,26 @@ public class cet4 extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                    requestDate();
+                requestDate();
+            }
+        }).start();
+
+
+    }
+
+
+
+
+    public void show(View view){
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                requestDate1();
             }
         }).start();
     }
 
-    public void show(View view){
-        textView.setText(chinese);
-    }
 
 
 
@@ -78,21 +91,33 @@ public class cet4 extends AppCompatActivity {
 
 
 
-    private void requestDate(){
-       // textView.setText("sb");
+
+
+
+
+
+
+
+
+
+    public void requestDate(){
+        //textView.setText("sb");
 
 
         Random rand = new Random();
 
 
-        int random=rand.nextInt(4258);
+        int random=rand.nextInt(4257);
+        ran=random;
+
+
 
 
 
 
         URL url = null;
         try {
-            url = new URL("http://mrqd8dcc.shenzhuo.vip:11532/id?id="+random);
+            url = new URL("http://ef5c3b.natappfree.cc/id?id="+random);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -109,7 +134,7 @@ public class cet4 extends AppCompatActivity {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                //
+                //textView.setText("sb");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -123,7 +148,21 @@ public class cet4 extends AppCompatActivity {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 re = response.body().string();
-//                //textView.setText("sb");
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //String en = "chinese\":(.+?),";
+                       // Matcher matcher = Pattern.compile(en).matcher(re);
+                        //while (matcher.find()){
+                            //String ret = matcher.group(1);
+                            textView.setText(re);
+                       // }
+
+
+                    }
+                });
+               //textView.setText("sb");
 //
 //                String chinese = "chinese\":(.+?),";
 //                Matcher ch = Pattern.compile(chinese).matcher(re);
@@ -131,28 +170,28 @@ public class cet4 extends AppCompatActivity {
 //                while (ch.find()){
 //                    String chi = ch.group(1);
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            //textView.setText(re);
-                            String en = "english\":(.+?),";
-                            String zh = "chinese\":(.+?),";
-                            Matcher matcher = Pattern.compile(en).matcher(re);
-                            Matcher matcher1 = Pattern.compile(zh).matcher(re);
-                            while (matcher.find()){
-                                String ret = matcher.group(1);
-                                //String ret1 = matcher1.group(1);
-                                textView.setText(ret);
-                            }
-
-                            while (matcher1.find()){
-                                String ret1 = matcher.group(0);
-                                chinese = ret1;
-                                //textView.setText(ret);
-                            }
-
-                        }
-                    });
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            //textView.setText(re);
+//                            String en = "english\":(.+?),";
+//                            //String zh = "chinese\":(.+?),";
+//                            Matcher matcher = Pattern.compile(en).matcher(re);
+//                            //Matcher matcher1 = Pattern.compile(zh).matcher(re);
+//                            while (matcher.find()){
+//                                String ret = matcher.group(1);
+//                                //String ret1 = matcher1.group(1);
+//                                textView.setText(re);
+//                            }
+//
+////                            while (matcher1.find()){
+////                                String ret1 = matcher.group(0);
+////                                chinese = ret1;
+////                                //textView.setText(ret);
+////                            }
+//
+//                        }
+//                    });
 
 
 
@@ -220,6 +259,121 @@ public class cet4 extends AppCompatActivity {
 //        }
 //
 //    }
+
+
+
+
+    public void requestDate1(){
+        //textView.setText("sb");
+
+
+
+
+
+
+
+
+
+        URL url = null;
+        try {
+            url = new URL("http://ef5c3b.natappfree.cc/id1?id="+ran);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(url)//访问连接
+                .get()
+                .build();
+        Call call = client.newCall(request);
+
+
+
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                //textView.setText("sb");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        textView.setText("sb");
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                re = response.body().string();
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //String en = "chinese\":(.+?),";
+                        // Matcher matcher = Pattern.compile(en).matcher(re);
+                        //while (matcher.find()){
+                        //String ret = matcher.group(1);
+                        textView.setText(re);
+                        // }
+
+
+                    }
+                });
+                //textView.setText("sb");
+//
+//                String chinese = "chinese\":(.+?),";
+//                Matcher ch = Pattern.compile(chinese).matcher(re);
+//
+//                while (ch.find()){
+//                    String chi = ch.group(1);
+
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            //textView.setText(re);
+//                            String en = "english\":(.+?),";
+//                            //String zh = "chinese\":(.+?),";
+//                            Matcher matcher = Pattern.compile(en).matcher(re);
+//                            //Matcher matcher1 = Pattern.compile(zh).matcher(re);
+//                            while (matcher.find()){
+//                                String ret = matcher.group(1);
+//                                //String ret1 = matcher1.group(1);
+//                                textView.setText(re);
+//                            }
+//
+////                            while (matcher1.find()){
+////                                String ret1 = matcher.group(0);
+////                                chinese = ret1;
+////                                //textView.setText(ret);
+////                            }
+//
+//                        }
+//                    });
+
+
+
+                //}
+                //textView.setText(re);
+//                textView.setText(re);
+
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 
 
 

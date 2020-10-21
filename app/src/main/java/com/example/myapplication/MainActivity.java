@@ -106,25 +106,32 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
-
-
+    // 用来计算返回键的点击间隔时间
+    private long exitTime = 0;
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if ((System.currentTimeMillis() - mExitTime) > 2000) {
-                Object mHelperUtils;
-                Toast.makeText(this, "再按一次退出APP", Toast.LENGTH_SHORT).show();
-                //System.currentTimeMillis()系统当前时间
-                mExitTime = System.currentTimeMillis();
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                //弹出提示，可以有多种方式
+                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
             } else {
                 finish();
             }
             return true;
         }
+
         return super.onKeyDown(keyCode, event);
     }
+
+
+
+
+
+
+
+
 
 
 

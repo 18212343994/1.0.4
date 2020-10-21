@@ -158,6 +158,8 @@ public class fanyi extends Activity {
                         @Override
                         public void run() {
                             textView.setText(chi);
+
+
                         }
                     });
 
@@ -165,7 +167,7 @@ public class fanyi extends Activity {
 
                 }
                 //textView.setText(re);
-//                textView.setText(re);
+                //textView.setText("hrll");
 
             }
         });
