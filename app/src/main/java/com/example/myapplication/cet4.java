@@ -35,6 +35,7 @@ import java.util.Random;
 //1.0.2
 public class cet4 extends AppCompatActivity {
     Button cet4;
+    Button btn4;
     TextView textView;
     String re;
     public int ran = 1;
@@ -46,6 +47,7 @@ public class cet4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cet4);
+        btn4 = findViewById(R.id.btn4);
         textView = findViewById(R.id.txt);
 
         Button button=(Button)findViewById(R.id.close);
@@ -60,10 +62,15 @@ public class cet4 extends AppCompatActivity {
 
 
     public void btn1Click(View view) throws IOException {
+        //Button btn = new Button(context);
+
+
+
 
         new Thread(new Runnable() {
             @Override
             public void run() {
+
                 requestDate();
             }
         }).start();
@@ -156,7 +163,9 @@ public class cet4 extends AppCompatActivity {
                        // Matcher matcher = Pattern.compile(en).matcher(re);
                         //while (matcher.find()){
                             //String ret = matcher.group(1);
+                        btn4.setText("下一个");
                             textView.setText(re);
+
                        // }
 
 
@@ -259,6 +268,11 @@ public class cet4 extends AppCompatActivity {
 //        }
 //
 //    }
+
+
+
+
+
 
 
 

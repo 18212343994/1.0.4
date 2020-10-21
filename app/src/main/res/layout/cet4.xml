@@ -56,7 +56,7 @@
         android:layout_marginEnd="128dp"
         android:layout_marginRight="128dp"
         android:onClick="btn1Click"
-        android:text="下一个"
+        android:text="点击开始"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/close"
@@ -66,6 +66,7 @@
     <TextView
         android:id="@+id/txt"
         android:onClick="show"
+        android:textSize="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
