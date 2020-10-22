@@ -145,7 +145,7 @@ public class cet4 extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        textView.setText("sb");
+                        textView.setText("网络加载失败，请重试");
 
                     }
                 });

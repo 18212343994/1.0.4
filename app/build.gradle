@@ -5,9 +5,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    allprojects {
+        repositories {
+
+            maven { url "https://jitpack.io" }
+        }
+    }
+
     configurations {
         cleanedAnnotations
-        compile.exclude group: 'org.jetbrains' , module:'annotations'
+        compile.exclude group: 'org.jetbrains', module: 'annotations'
     }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -35,9 +42,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation 'com.youth.banner:banner:2.1.0'
 
-
-
+    implementation 'com.github.dongjunkun:BannerLayout:1.0.6'
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     implementation 'org.jetbrains:annotations-java5:15.0'
     // Retrofit库
