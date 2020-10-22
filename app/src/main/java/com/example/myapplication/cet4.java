@@ -124,7 +124,7 @@ public class cet4 extends AppCompatActivity {
 
         URL url = null;
         try {
-            url = new URL("http://ef5c3b.natappfree.cc/id?id="+random);
+            url = new URL("http://zhapi.free.idcfengye.com/id?id="+random);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -290,7 +290,7 @@ public class cet4 extends AppCompatActivity {
 
         URL url = null;
         try {
-            url = new URL("http://ef5c3b.natappfree.cc/id1?id="+ran);
+            url = new URL("http://zhapi.free.idcfengye.com/id1?id="+ran);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -311,7 +311,7 @@ public class cet4 extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        textView.setText("sb");
+                        textView.setText("网络加载失败，请重试");
 
                     }
                 });
