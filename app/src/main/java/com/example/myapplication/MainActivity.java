@@ -1,4 +1,10 @@
 package com.example.myapplication;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +33,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 
 
-
     private ViewPager viewPager;
     private int[] imageResIds;
     private ArrayList<ImageView> imageViewList;
@@ -37,13 +42,10 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     private int previousSelectedPosition = 0;
     boolean isRunning = false;
 
-
     Button btn1,btn2;
     EditText editName,editPSW;
     private long mExitTime;
     TextView textView;
-
-
 
     String fileName="cet4";
 
@@ -51,10 +53,51 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textView = findViewById(R.id.txt);
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    requestDate();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            private void requestDate() throws IOException {
+                URL u = new URL("http://route.showapi.com/1211-1?showapi_appid=391443&count=1&showapi_sign=ad54ea4fa4b444e0b360c35847261ffc");
+                InputStream in = u.openStream();
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                try {
+                    byte buf[] = new byte[1024];
+                    int read = 0;
+                    while ((read = in.read(buf)) > 0) {
+                        out.write(buf, 0, read);
+                    }
+                } finally {
+                    if ( in != null) {
+                        in.close();
+                    }
+                }
+                byte b[] = out.toByteArray();
+                System.out.println(new String(b, "utf-8"));
+                String a=new String(b, "utf-8");
 
 
 
+                String regex ="english\":(.+?)。";
+                Matcher matcher = Pattern.compile(regex).matcher(a);
+                while (matcher.find()){
+                    String ret = matcher.group(0);
+                    String ret1 = ret.replace("\",\"","\n");
+                    textView.setText("励志语录："+"\n"+ret1);
 
+                }
+            }
+        }).start();
 
 
         // 初始化布局 View视图
@@ -91,23 +134,11 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
             ;
         }.start();
 
-
-
-
-
-
-
-
-
-
         //btn1=findViewById(R.id.btn1);
         btn2=findViewById(R.id.btn2);
 
         editName=findViewById(R.id.editName);
         editPSW=findViewById(R.id.editName);
-
-        textView = findViewById(R.id.txt);
-
 
         final Button fanyi=(Button)findViewById(R.id.fanyi);
         final Button add=(Button)findViewById(R.id.add);
@@ -121,31 +152,6 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         final List<String> urls = new ArrayList<>();
 
 //轮播图
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,6 +178,15 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         });
 
     }
+
+    private void lizhi() {
+        textView.setText("网络加载失败，请重试");
+    }
+
+
+
+
+
 
     public void btn1Click(View view) throws IOException {
         String name=editName.getText().toString();
@@ -250,6 +265,8 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     private void initData() {
         // 图片资源id数组
         imageResIds = new int[]{R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e};
+
+
 
         // 文本描述
         contentDescs = new String[]{

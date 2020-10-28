@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,13 +15,17 @@
         android:networkSecurityConfig="@xml/net"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+
+
 
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/net" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".buttom">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +35,10 @@
         <activity android:name=".fanyi" />
         <activity android:name=".add" />
         <activity android:name=".cet4" />
+        <activity android:name=".mydict" />
+        <activity android:name=".MainActivity" />
+
+
     </application>
 
 </manifest>

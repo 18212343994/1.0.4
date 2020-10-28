@@ -11,17 +11,18 @@
         android:id="@+id/relativeLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn1"
+        app:layout_constraintBottom_toTopOf="@+id/txt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
         <!--存放图片的ViewPager-->
+
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,63 +56,67 @@
         android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginLeft="13dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
         android:onClick="btn1Click"
         android:text="四级"
-        app:layout_constraintBottom_toTopOf="@+id/btn2"
-        app:layout_constraintStart_toStartOf="@+id/btn2"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toStartOf="@+id/btn2"
+        app:layout_constraintTop_toBottomOf="@+id/txt"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginLeft="77dp"
+        android:layout_marginEnd="77dp"
+        android:layout_marginRight="77dp"
         android:onClick="btn2Click"
         android:text="高考（开发中）"
-        app:layout_constraintBottom_toTopOf="@+id/fanyi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn1" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn1"
+        app:layout_constraintEnd_toEndOf="@+id/txt"
+        app:layout_constraintStart_toStartOf="@+id/add" />
 
     <TextView
         android:id="@+id/txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="95dp"
+        android:layout_width="0dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="190dp"
         android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/add"
-        app:layout_constraintTop_toBottomOf="@+id/add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/fanyi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="49dp"
+        android:layout_marginTop="36dp"
         android:text="翻译"
-        app:layout_constraintBottom_toTopOf="@+id/add"
-        app:layout_constraintEnd_toEndOf="@+id/btn2"
+        app:layout_constraintStart_toStartOf="@+id/add"
         app:layout_constraintTop_toBottomOf="@+id/btn2" />
 
     <Button
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="47dp"
+        android:layout_marginTop="43dp"
         android:text="添加单词(开发中）"
-        app:layout_constraintBottom_toTopOf="@+id/txt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fanyi"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/mydict"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="266dp"
+        android:text="词典"
+        tools:layout_editor_absoluteY="416dp"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
