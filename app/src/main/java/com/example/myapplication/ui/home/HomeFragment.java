@@ -1,4 +1,5 @@
 package com.example.myapplication.ui.home;
+
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -29,6 +30,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,14 +59,14 @@ public class HomeFragment extends Fragment {
     boolean isRunning = false;
     public int ran = 1;
     private Button test;
-    Button btn1,btn2,fanyi;
-    EditText editName,editPSW;
+    Button btn1, btn2, fanyi,mydict;
+    EditText editName, editPSW;
     private long mExitTime;
     TextView text;
-    private View view,view2;
+    private View view, view2;
 
 
-    String fileName="cet4";
+    String fileName = "cet4";
     private HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -82,16 +84,12 @@ public class HomeFragment extends Fragment {
         //textView = textView.findViewById();
 
 
-
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
 
             public void onChanged(@Nullable String s) {
 
-                textView.setText("HELLO");
-
-
-
+//                textView.setText("HELLO");
 
 
                 new Thread(new Runnable() {
@@ -105,10 +103,11 @@ public class HomeFragment extends Fragment {
                             e.printStackTrace();
                         }
                     }
+
                     private void requestDate() throws IOException {
 
 
-                        textView.setText("h");
+                        textView.setText("装修中......敬请期待");
                         URL u = new URL("http://route.showapi.com/1211-1?showapi_appid=391443&count=1&showapi_sign=ad54ea4fa4b444e0b360c35847261ffc");
                         InputStream in = u.openStream();
                         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -119,20 +118,20 @@ public class HomeFragment extends Fragment {
                                 out.write(buf, 0, read);
                             }
                         } finally {
-                            if ( in != null) {
+                            if (in != null) {
                                 in.close();
                             }
                         }
                         byte b[] = out.toByteArray();
                         System.out.println(new String(b, "utf-8"));
-                        String a=new String(b, "utf-8");
+                        String a = new String(b, "utf-8");
 
-                        String regex ="english\":(.+?)。";
+                        String regex = "english\":(.+?)。";
                         Matcher matcher = Pattern.compile(regex).matcher(a);
-                        while (matcher.find()){
+                        while (matcher.find()) {
                             String ret = matcher.group(0);
-                            String ret1 = ret.replace("\",\"","\n");
-                            txt.setText("励志语录："+"\n"+ret1);
+                            String ret1 = ret.replace("\",\"", "\n");
+                            txt.setText("励志语录：" + "\n" + ret1);
 
                         }
                     }
@@ -150,14 +149,13 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-
         btn1 = (Button) getActivity().findViewById(R.id.btn1);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent intent=new Intent(getActivity(), cet4.class);
+                Intent intent = new Intent(getActivity(), cet4.class);
                 startActivity(intent);
 
             }
@@ -169,32 +167,25 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent intent=new Intent(getActivity(), com.example.myapplication.fanyi.class);
+                Intent intent = new Intent(getActivity(), com.example.myapplication.fanyi.class);
                 startActivity(intent);
             }
         });
 
 
 
-
-
-
-
-
-
-
-
-
+        mydict = (Button) getActivity().findViewById(R.id.mydict);
+        mydict.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(getActivity(), com.example.myapplication.mydict.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
-
-
-
-
-
-
-
 
 
 }

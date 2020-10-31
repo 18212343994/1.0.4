@@ -32,6 +32,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.util.Random;
+
 //1.0.2
 public class cet4 extends AppCompatActivity {
     Button cet4;
@@ -39,9 +40,9 @@ public class cet4 extends AppCompatActivity {
     TextView textView;
     String re;
     public int ran = 1;
-    String fileName="cet4";
+    String fileName = "cet4";
     public String chinese;
-    private int count=0;
+    private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class cet4 extends AppCompatActivity {
         btn4 = findViewById(R.id.btn4);
         textView = findViewById(R.id.txt);
 
-        Button button=(Button)findViewById(R.id.close);
+        Button button = (Button) findViewById(R.id.close);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,11 +61,8 @@ public class cet4 extends AppCompatActivity {
     }
 
 
-
     public void btn1Click(View view) throws IOException {
         //Button btn = new Button(context);
-
-
 
 
         new Thread(new Runnable() {
@@ -79,9 +77,7 @@ public class cet4 extends AppCompatActivity {
     }
 
 
-
-
-    public void show(View view){
+    public void show(View view) {
 
         new Thread(new Runnable() {
             @Override
@@ -92,39 +88,20 @@ public class cet4 extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void requestDate(){
+    public void requestDate() {
         //textView.setText("sb");
 
 
         Random rand = new Random();
 
 
-        int random=rand.nextInt(4257);
-        ran=random;
-
-
-
-
+        int random = rand.nextInt(4257);
+        ran = random;
 
 
         URL url = null;
         try {
-            url = new URL("http://zhapi.free.idcfengye.com/id?id="+random);
+            url = new URL("http://zhapi.free.idcfengye.com/id?id=" + random);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -135,7 +112,6 @@ public class cet4 extends AppCompatActivity {
                 .get()
                 .build();
         Call call = client.newCall(request);
-
 
 
         call.enqueue(new Callback() {
@@ -160,18 +136,18 @@ public class cet4 extends AppCompatActivity {
                     @Override
                     public void run() {
                         //String en = "chinese\":(.+?),";
-                       // Matcher matcher = Pattern.compile(en).matcher(re);
+                        // Matcher matcher = Pattern.compile(en).matcher(re);
                         //while (matcher.find()){
-                            //String ret = matcher.group(1);
+                        //String ret = matcher.group(1);
                         btn4.setText("下一个");
-                            textView.setText(re);
+                        textView.setText(re);
 
-                       // }
+                        // }
 
 
                     }
                 });
-               //textView.setText("sb");
+                //textView.setText("sb");
 //
 //                String chinese = "chinese\":(.+?),";
 //                Matcher ch = Pattern.compile(chinese).matcher(re);
@@ -203,7 +179,6 @@ public class cet4 extends AppCompatActivity {
 //                    });
 
 
-
                 //}
                 //textView.setText(re);
 //                textView.setText(re);
@@ -213,32 +188,7 @@ public class cet4 extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     //以下是内存储模式下的单词读取
@@ -270,27 +220,13 @@ public class cet4 extends AppCompatActivity {
 //    }
 
 
-
-
-
-
-
-
-
-    public void requestDate1(){
+    public void requestDate1() {
         //textView.setText("sb");
-
-
-
-
-
-
-
 
 
         URL url = null;
         try {
-            url = new URL("http://zhapi.free.idcfengye.com/id1?id="+ran);
+            url = new URL("http://zhapi.free.idcfengye.com/id1?id=" + ran);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -301,7 +237,6 @@ public class cet4 extends AppCompatActivity {
                 .get()
                 .build();
         Call call = client.newCall(request);
-
 
 
         call.enqueue(new Callback() {
@@ -367,7 +302,6 @@ public class cet4 extends AppCompatActivity {
 //                    });
 
 
-
                 //}
                 //textView.setText(re);
 //                textView.setText(re);
@@ -377,19 +311,7 @@ public class cet4 extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
-
-
-
     }
-
-
 
 
 }

@@ -31,7 +31,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class mydict extends Activity {
-    String re="翻译结果：";
+    String re = "翻译结果：";
 
     Button fanyi;
     EditText input;
@@ -42,16 +42,14 @@ public class mydict extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.fanyi);
-        fanyi=findViewById(R.id.fanyi);
-        input=findViewById(R.id.input);
+        setContentView(R.layout.activity_mydict);
+        fanyi = findViewById(R.id.fanyi);
+        input = findViewById(R.id.input);
         textView = findViewById(R.id.txt);
 
 
-
-
         //setContentView(R.layout.fanyi);
-        Button button=(Button)findViewById(R.id.close);
+        Button button = (Button) findViewById(R.id.close);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +59,7 @@ public class mydict extends Activity {
 
 
     }
+
     public void fanyiOnclick(View view) throws IOException {
 
         new Thread(new Runnable() {
@@ -71,59 +70,22 @@ public class mydict extends Activity {
         }).start();
 //        requestDate();
 
-        // Retrofit + Rxjava
-
-        //String pwd=input.getText().toString();
-
-
-//        URL u = new URL("http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh&q="+pwd);
-//        InputStream in = u.openStream();
-//        ByteArrayOutputStream out = new ByteArrayOutputStream();
-//        try {
-//            byte buf[] = new byte[1024];
-//            int read = 0;
-//            while ((read = in.read(buf)) > 0) {
-//                out.write(buf, 0, read);
-//            }
-//        } finally {
-//            if ( in != null) {
-//                in.close();
-//            }
-//        }
-//
-//        byte b[] = out.toByteArray();
-//        String a=new String(b, "utf-8");
-//        String chinese = "trans\":(.+?),";
-//        Matcher ch = Pattern.compile(chinese).matcher(a);
-//        while (ch.find()){
-//
-//            String chi = ch.group(1);
-//            textView.setText(chi);
-//
-//        }
-
-
-
 
         //textView.setText(pwd);
 
-        Toast.makeText(this,"翻译成功",Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "正在查询", Toast.LENGTH_LONG).show();
 
 
     }
 
 
-
-
-
-
     //使用okhttp框架
     private void requestDate() {
 
-        String pwd=input.getText().toString();
+        String pwd = input.getText().toString();
         URL url = null;
         try {
-            url = new URL("http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh&q="+pwd);
+            url = new URL("http://zhapi.free.idcfengye.com/word?id=" + pwd);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -145,37 +107,27 @@ public class mydict extends Activity {
                 re = response.body().string();
 
 
-                String chinese = "trans\":(.+?),";
-                Matcher ch = Pattern.compile(chinese).matcher(re);
-
-                while (ch.find()){
-
-
-
-                    String chi = ch.group(1);
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            textView.setText(chi);
+                            textView.setText(re);
 
 
                         }
                     });
 
 
-
                 }
                 //textView.setText(re);
                 //textView.setText("hrll");
 
-            }
+
         });
 
 
-
-
-    }}
+    }
+}
 
 
 

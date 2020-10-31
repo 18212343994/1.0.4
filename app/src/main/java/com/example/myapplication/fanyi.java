@@ -31,7 +31,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class fanyi extends Activity {
-    String re="翻译结果：";
+    String re = "翻译结果：";
 
     Button fanyi;
     EditText input;
@@ -43,15 +43,13 @@ public class fanyi extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.fanyi);
-        fanyi=findViewById(R.id.fanyi);
-        input=findViewById(R.id.input);
+        fanyi = findViewById(R.id.fanyi);
+        input = findViewById(R.id.input);
         textView = findViewById(R.id.txt);
 
 
-
-
         //setContentView(R.layout.fanyi);
-        Button button=(Button)findViewById(R.id.close);
+        Button button = (Button) findViewById(R.id.close);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +59,7 @@ public class fanyi extends Activity {
 
 
     }
+
     public void fanyiOnclick(View view) throws IOException {
 
         new Thread(new Runnable() {
@@ -103,27 +102,21 @@ public class fanyi extends Activity {
 //        }
 
 
-
-
         //textView.setText(pwd);
 
-        Toast.makeText(this,"翻译成功",Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "翻译成功", Toast.LENGTH_LONG).show();
 
 
     }
 
 
-
-
-
-
     //使用okhttp框架
-        private void requestDate() {
+    private void requestDate() {
 
-        String pwd=input.getText().toString();
+        String pwd = input.getText().toString();
         URL url = null;
         try {
-            url = new URL("http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh&q="+pwd);
+            url = new URL("http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh&q=" + pwd);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -142,14 +135,13 @@ public class fanyi extends Activity {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-               re = response.body().string();
+                re = response.body().string();
 
 
                 String chinese = "trans\":(.+?),";
                 Matcher ch = Pattern.compile(chinese).matcher(re);
 
-                while (ch.find()){
-
+                while (ch.find()) {
 
 
                     String chi = ch.group(1);
@@ -164,7 +156,6 @@ public class fanyi extends Activity {
                     });
 
 
-
                 }
                 //textView.setText(re);
                 //textView.setText("hrll");
@@ -173,9 +164,8 @@ public class fanyi extends Activity {
         });
 
 
-
-
-    }}
+    }
+}
 
 
 
