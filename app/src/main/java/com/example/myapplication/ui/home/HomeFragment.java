@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment {
     Handler handler = new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
-            handler.sendEmptyMessageDelayed(1,2000);
+            handler.sendEmptyMessageDelayed(1,3000);
             mViewpage.setCurrentItem(mViewpage.getCurrentItem()+1);
             super.handleMessage(msg);
         }

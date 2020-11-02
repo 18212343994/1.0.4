@@ -53,6 +53,9 @@ dependencies {
     implementation 'com.github.dongjunkun:BannerLayout:1.0.6'
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'com.github.songixan:SmileRefresh:1.1'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:24.2.1'
     // Retrofit库
 
 }
