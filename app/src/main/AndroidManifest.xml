@@ -37,6 +37,7 @@
         <activity android:name=".cet4" />
         <activity android:name=".mydict" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".recite" />
 
 
     </application>

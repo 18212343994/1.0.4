@@ -68,41 +68,7 @@ public class fanyi extends Activity {
                 requestDate();
             }
         }).start();
-//        requestDate();
 
-        // Retrofit + Rxjava
-
-        //String pwd=input.getText().toString();
-
-
-//        URL u = new URL("http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh&q="+pwd);
-//        InputStream in = u.openStream();
-//        ByteArrayOutputStream out = new ByteArrayOutputStream();
-//        try {
-//            byte buf[] = new byte[1024];
-//            int read = 0;
-//            while ((read = in.read(buf)) > 0) {
-//                out.write(buf, 0, read);
-//            }
-//        } finally {
-//            if ( in != null) {
-//                in.close();
-//            }
-//        }
-//
-//        byte b[] = out.toByteArray();
-//        String a=new String(b, "utf-8");
-//        String chinese = "trans\":(.+?),";
-//        Matcher ch = Pattern.compile(chinese).matcher(a);
-//        while (ch.find()){
-//
-//            String chi = ch.group(1);
-//            textView.setText(chi);
-//
-//        }
-
-
-        //textView.setText(pwd);
 
         Toast.makeText(this, "翻译成功", Toast.LENGTH_LONG).show();
 

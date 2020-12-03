@@ -25,6 +25,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication.R;
 import com.example.myapplication.cet4;
+import com.example.myapplication.recite;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -204,7 +205,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent intent = new Intent(getActivity(), cet4.class);
+                Intent intent = new Intent(getActivity(), recite.class);
                 startActivity(intent);
 
             }
