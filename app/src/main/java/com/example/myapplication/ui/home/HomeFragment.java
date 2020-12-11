@@ -142,50 +142,50 @@ public class HomeFragment extends Fragment {
 //                textView.setText("HELLO");
 
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        try {
-                            requestDate();
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    private void requestDate() throws IOException {
-
-
-                        //textView.setText("装修中......敬请期待");
-                        URL u = new URL("http://route.showapi.com/1211-1?showapi_appid=391443&count=1&showapi_sign=ad54ea4fa4b444e0b360c35847261ffc");
-                        InputStream in = u.openStream();
-                        ByteArrayOutputStream out = new ByteArrayOutputStream();
-                        try {
-                            byte buf[] = new byte[1024];
-                            int read = 0;
-                            while ((read = in.read(buf)) > 0) {
-                                out.write(buf, 0, read);
-                            }
-                        } finally {
-                            if (in != null) {
-                                in.close();
-                            }
-                        }
-                        byte b[] = out.toByteArray();
-                        System.out.println(new String(b, "utf-8"));
-                        String a = new String(b, "utf-8");
-
-                        String regex = "english\":(.+?)。";
-                        Matcher matcher = Pattern.compile(regex).matcher(a);
-                        while (matcher.find()) {
-                            String ret = matcher.group(0);
-                            String ret1 = ret.replace("\",\"", "\n");
-                            txt.setText("励志语录：" + "\n" + ret1);
-
-                        }
-                    }
-                }).start();
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//
+//                        try {
+//                            requestDate();
+//
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    private void requestDate() throws IOException {
+//
+//
+//                        //textView.setText("装修中......敬请期待");
+//                        URL u = new URL("http://route.showapi.com/1211-1?showapi_appid=391443&count=1&showapi_sign=ad54ea4fa4b444e0b360c35847261ffc");
+//                        InputStream in = u.openStream();
+//                        ByteArrayOutputStream out = new ByteArrayOutputStream();
+//                        try {
+//                            byte buf[] = new byte[1024];
+//                            int read = 0;
+//                            while ((read = in.read(buf)) > 0) {
+//                                out.write(buf, 0, read);
+//                            }
+//                        } finally {
+//                            if (in != null) {
+//                                in.close();
+//                            }
+//                        }
+//                        byte b[] = out.toByteArray();
+//                        System.out.println(new String(b, "utf-8"));
+//                        String a = new String(b, "utf-8");
+//
+//                        String regex = "english\":(.+?)。";
+//                        Matcher matcher = Pattern.compile(regex).matcher(a);
+//                        while (matcher.find()) {
+//                            String ret = matcher.group(0);
+//                            String ret1 = ret.replace("\",\"", "\n");
+//                            txt.setText("励志语录：" + "\n" + ret1);
+//
+//                        }
+//                    }
+//                }).start();
 
             }
         });
